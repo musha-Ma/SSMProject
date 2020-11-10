@@ -1,0 +1,9 @@
+注解注入
+1、常见注解
+    @Component
+    @Repository
+    @Service
+    @Controller
+    @Value()
+    @Autowired
+    @Resource

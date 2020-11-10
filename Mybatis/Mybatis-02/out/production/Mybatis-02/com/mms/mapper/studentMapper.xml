@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mms.mapper.StudentMapper">
+
+    <!--
+        通过namespace的值与sql标签的id值唯一确定一条sql语句
+            namespace=接口的全类名
+            sql标签的id=接口的方法名
+    -->
+    <select id="queryStudentById" resultType="com.mms.entity.Student"  parameterType="int">
+		select * from student where  stuno = #{stuNo}
+	</select>
+
+    <!--查询全部-->
+    <select id="queryAllStudent" resultType="com.mms.entity.Student">
+		select * from student
+	</select>
+
+    <!--增加-->
+    <insert id="insertStudent" parameterType="com.mms.entity.Student">
+		insert into student (stuno,stuname,stuage,graname) values (#{stuNo},#{stuName},#{stuAge},#{graName})
+	</insert>
+
+    <!--修改-->
+    <update id="updateStudent" parameterType="com.mms.entity.Student">
+		update student set stuname = #{stuName}, stuage = #{stuAge}, graname = #{graName} where stuno = #{stuNo}
+	</update>
+
+    <!--删除-->
+    <delete id="deleteStudent" parameterType="int">
+		delete from student where stuno = #{stuNo}
+	</delete>
+
+</mapper>

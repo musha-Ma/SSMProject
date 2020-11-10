@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        引用类型的自动注入
+        a、方式一：byName属性（按名称注入）：通过java对象引用类型的属性名与spring容器中bean
+           标签对象的id值一样且数据类型是一致的，这样能够实现引用类型的自动注入
+
+           语法：
+           <bean id = "xxx" class = "xxx" autowire = "byName">
+                简单类型属性赋值
+           </bean>
+
+        b、方式二：byType（按类型注入）：通过java对象引用类型属性的数据类型和spring容器中
+           bean标签的class属性值是同源关系；
+           常见的同源关系：
+            1）java引用类型属性数据类型和bean标签的class属性值数据类型一样
+            2）java引用类型属性数据类型和bean标签的class属性值数据类型是父子关系
+            3）java引用类型属性数据类型和bean标签的class属性值数据类型是接口和实现类关系
+            注意：在一个配置文件中，符合条件的同源关系只能有一个
+    -->
+
+    <!--使用byName实现引用类型自动注入
+    <bean id="student" class="com.mms.ba03.Student" autowire="byName">
+        简单类型赋值
+        <property name="name" value="张三"/>
+        <property name="age" value="23"/>
+    </bean>
+    引用类型
+    <bean id="school" class="com.mms.ba03.School">
+        <property name="schoolName" value="石河子大学"/>
+        <property name="schoolAddress" value="石河子市"/>
+    </bean>-->
+
+    <!--使用byType实现引用类型自动注入-->
+    <bean id="student2" class="com.mms.ba03.Student" autowire="byType">
+        <!--简单类型赋值-->
+        <property name="name" value="李四"/>
+        <property name="age" value="24"/>
+    </bean>
+    <!--引用类型
+    <bean id="school2" class="com.mms.ba03.School">
+        <property name="schoolName" value="西南大学"/>
+        <property name="schoolAddress" value="重庆市"/>
+    </bean>-->
+
+    <!--声明School的子类-->
+    <bean id="primarySchool" class="com.mms.ba03.PrimarySchool">
+        <property name="schoolName" value="西北大学"/>
+        <property name="schoolAddress" value="西安"/>
+    </bean>
+</beans>

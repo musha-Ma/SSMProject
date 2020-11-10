@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e1acb689-86ad-4099-94fb-ed902373748b" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>int count \= mapper\.queryTotal\(\)\;\n        \n        \/\/释放资源\n            sqlSession\.close\(\)\;</find>
+    </findStrings>
+  </component>
+  <component name="ProjectId" id="1iguPQ7lGlWI06AEJV8KHMChsa3" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MybatisTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mms.test.MybatisTest" />
+      <module name="Mybatis-05" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mms.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MybatisTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1acb689-86ad-4099-94fb-ed902373748b" name="Default" comment="" />
+      <created>1602215050912</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602215050912</updated>
+      <workItem from="1602215052217" duration="418000" />
+      <workItem from="1602248949642" duration="453000" />
+      <workItem from="1602249406395" duration="2634000" />
+      <workItem from="1602341536034" duration="44000" />
+      <workItem from="1602341749974" duration="345000" />
+      <workItem from="1602342173237" duration="4000" />
+      <workItem from="1602346917142" duration="10000" />
+      <workItem from="1602347295252" duration="925000" />
+      <workItem from="1602376574795" duration="1547000" />
+      <workItem from="1602378394276" duration="4000" />
+      <workItem from="1602386258996" duration="305000" />
+      <workItem from="1602391904785" duration="70000" />
+      <workItem from="1602905776008" duration="9000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="96" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602348346521">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state x="184" y="96" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.820@0.23.1440.820" timestamp="1602348346521" />
+    <state width="1398" height="203" key="GridCell.Tab.0.bottom" timestamp="1602342094959">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="1398" height="203" key="GridCell.Tab.0.bottom/0.23.1440.820@0.23.1440.820" timestamp="1602342094959" />
+    <state width="1398" height="203" key="GridCell.Tab.0.center" timestamp="1602342094958">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="1398" height="203" key="GridCell.Tab.0.center/0.23.1440.820@0.23.1440.820" timestamp="1602342094958" />
+    <state width="1398" height="203" key="GridCell.Tab.0.left" timestamp="1602342094958">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="1398" height="203" key="GridCell.Tab.0.left/0.23.1440.820@0.23.1440.820" timestamp="1602342094958" />
+    <state width="1398" height="203" key="GridCell.Tab.0.right" timestamp="1602342094959">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="1398" height="203" key="GridCell.Tab.0.right/0.23.1440.820@0.23.1440.820" timestamp="1602342094959" />
+    <state x="174" y="50" key="SettingsEditor" timestamp="1602386544798">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state x="174" y="50" key="SettingsEditor/0.23.1440.820@0.23.1440.820" timestamp="1602386544798" />
+    <state x="399" y="265" key="com.intellij.ide.util.TipDialog" timestamp="1602341538285">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state x="399" y="265" key="com.intellij.ide.util.TipDialog/0.23.1440.820@0.23.1440.820" timestamp="1602341538285" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Mybatis-05</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>mybatis-3.4.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

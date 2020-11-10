@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--声明目标对象-->
+    <bean id="service" class="com.mms.ba01.ServiceImpl"/>
+
+    <!--声明切面对象-->
+    <bean id="myAspectsJ" class="com.mms.ba01.MyAspectJ"/>
+
+    <!--
+        声明自动代理生成器标签
+            aspectj-autoproxy：生成器会一次性的将spring配置文件的所以目标对象生成代理对象
+            代理对象的生成是在内存中完成的
+    -->
+    <aop:aspectj-autoproxy/>
+</beans>

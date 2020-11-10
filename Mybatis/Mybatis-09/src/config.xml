@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--引入数据库配置文件-->
+    <properties resource="db.properties"/>
+    
+    <!--全局配置-->
+    <settings>
+        <!--开启日志-->
+        <setting name="logImpl" value="LOG4J"/>
+
+        <!--
+            开启二级缓存：
+            a、在setting标签中配置属性
+            b、在具体的mapper.xml中使用cache标签进行声明
+        -->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <!--
+            批量设置别名，会自动的将该包下的所有类定义了别名，别名就是其自身且不区分大小
+        -->
+        <package name="com.mms.entity" />
+    </typeAliases>
+
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载映射配置文件-->
+    <mappers>
+        <mapper resource="com/mms/mapper/studentMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mms.mapper.StudentMapper">
+
+    <!--一对一关联查询使用延迟加载-->
+    <select id="OneToOneWithLazyLoading" resultMap="oneToOnWithLazyLoading">
+        select * from student
+    </select>
+    <!--配置-resultMap-->
+    <resultMap id="oneToOnWithLazyLoading" type="Student">
+
+        <!--先根据学号查询学生-->
+        <id property="stuNo" column="stuno"></id>
+        <result property="stuName" column="stuname"></result>
+        <result property="cardID" column="cardid"></result>
+        <result property="classID" column="classid"></result>
+
+        <!--
+            1、延迟加载：根据需要查询学生证信息，将查询学生证的sql写入另一个mapper.xml文件中，并在
+            association标签的select属性上引用即可在需要时启动加载
+            2、属性介绍
+                select：属性值为需要延迟加载的sql语句，具体为namespace.sql标签id值
+                column：表与表之间的连接字段，即外键
+        -->
+        <association property="studentCard" javaType="StudentCard" select="com.mms.mapper.StudentCardMapper.queryByCardID" column="cardid"></association>
+    </resultMap>
+
+    <!--根据班级编号延时加载学生信息-->
+    <select id="queryByClassNo" resultType="Student" parameterType="int">
+        select * from student where classid = #{classNo}
+    </select>
+
+</mapper>

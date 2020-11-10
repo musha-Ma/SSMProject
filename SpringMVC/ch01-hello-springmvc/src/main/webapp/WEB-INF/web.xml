@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    
+    <!--
+        注册SpringMVC中央调度器DispatcherServlet
+        1、DispatcherServlet叫做中央调度器、前端控制器；
+        2、DispatcherServlet在tomcat服务器启动时创建，创建DispatcherServlet的代码中有一行类似于
+           new XxxController()的代码，用于在springmvc容器中创建控制器对象；注意控制器类声明语句上面
+           有注解@Controller，在spring中我们已经提及过该注解，作用是创建controller对象。
+        3、在创建DispatcherServlet时，要求读取springmvc配置文件，在该文件中通过组件扫描器声明了需要创建
+           对象的controller类所在的包名，DispatcherServlet会将组件扫描器声明的包下带有@Controller注解
+           修饰的类实例化并放入上下文对象中，需要时就可以直接使用了。这与使用spring开发web项目使用监听器初始化
+           spring容器的原理是一样的。
+    -->
+
+    <servlet>
+
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+        <!--
+            自定义springmvc配置文件位置，默认读取位置是在WEB-INF目录下，所以需要指定位置，注意该声明
+            必须位于servlet-name声明之后
+        -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:springmvc.xml</param-value>
+        </init-param>
+
+        <!--声明在tomcat启动时优先创建DispatcherServlet对象-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+
+        <!--
+            使用框架时，url-pattern可以使用两种方式声明
+            方式一：使用斜杠"/"，与传统servlet相同
+            方式二：使用扩展名，语法是*.Xxx、*.action、*.web等
+                   例如：some.do表示拦截一切以some.do结尾的请求
+                        完整url地址：localhost：8080/项目名/*.do
+        -->
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    
+</web-app>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--声明Student对象-->
+    <bean id="student" class="com.mms.component.Student">
+        <!--
+            1、简单类型使用property和value标签给对象属性赋值
+            2、简单类型：8个基本类型+String
+            3、当spring容器加载到这一行时会在创建完对象的同时使用对象的set方法给属性赋值，底层
+               调用的是对象的set方法
+            4、spring容器调用的是setXxx()方法，而不管对象是否具有Xxx属性，Xxx不区分大小写
+        -->
+        <property name="name" value="张三"/>
+        <property name="age" value="23"/>
+        <!--测试对象没有属性的set方法-->
+        <property name="graName" value="s1"/>
+        <!--
+            引用类型属性的set注入
+            property标签属性
+                name：属性名
+                ref：引用对象的id值
+        -->
+        <property name="address" ref="address"/>
+    </bean>
+
+    <!--Student对象的引用属性Address-->
+    <bean id="address" class="com.mms.component.Address">
+        <!--set注入-->
+        <property name="homeAddress" value="新疆"/>
+        <property name="schoolAddress" value="西安"/>
+    </bean>
+</beans>

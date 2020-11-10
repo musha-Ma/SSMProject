@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mms.mapper.StudentMapper">
+
+	<!--
+		动态sql
+			通过下面的一条查询语句感受一下：通过名字和学号查询学生
+			select stuno, stuanem, stuage, graname from student
+			where stuno = #{stuNo} and stuname = #{stuName}
+
+			有时我们传入的学生可能stuNo属性为空，那么此时的sql语句按理说应该变为下面的形式
+			select stuno, stuanem, stuage, graname from student
+			where  stuname = #{stuName}
+			但是当stuNo属性不为空的时候我们又要将sql语句改回去，有没有一种方法可以动态的实现这种需求的？
+			答案是使用动态sql
+
+	<select id="dynamicSql" parameterType="Student" resultType="Student">
+		select stuno, stuname, stuage, graname from student
+		where stuno = #{stuNo} and stuname = #{stuName}
+	</select>
+	-->
+
+	<!--动态sql实现上述需求方式1
+	<select id="dynamicSql" parameterType="Student" resultType="Student">
+		select stuno, stuname, stuage,graname from student where 1=1
+
+		stuNo属性不为空且不等于0，注意写属性名而不是字段名，与sql语句相关的写字段名
+		<if test="stuNo != null and stuNo != 0">
+			and stuno = #{stuNo}
+		</if>
+		<if test="stuName != null and stuName != ''">
+			and stuname = #{stuName}
+		</if>
+	</select>-->
+
+	<!--动态sql实现上述需求方式2-->
+	<select id="dynamicSql" parameterType="Student" resultType="Student">
+		select stuno, stuname, stuage,graname from student
+		<where>
+			<!--
+				执行sql时where标签会被mybatis底层自动解释为where关键字，即等同于：
+					select stuno, stuanem, stuage, graname from student
+					where stuno = #{stuNo} and stuname = #{stuName}
+					且where标签会智能的帮我们处理第一个and，当它发现sql语句需要and时会自动加上and，
+					不需要时会自动去掉and（即使在mapper.xml中写了and）
+			-->
+			<if test="stuNo != null and stuNo != 0">
+				and stuno = #{stuNo}
+			</if>
+			<if test="stuName != null and stuName != ''">
+				and stuname = #{stuName}
+			</if>
+		</where>
+
+	</select>
+
+	<!--
+		foreach标签：循坏遍历
+		案例：student表中有两条记录，学号分别为1，2，我们查询学号为1和2的学生记录即
+		select stuno, stuname, stuage, graname from student
+		where stuno in(1,2)
+	-->
+	<!--
+		遍历对象属性：将学号放进一个类的属性里面进行遍历取出
+
+	-->
+	<select id="foreachWithFiled" parameterType="StuNo" resultType="Student">
+		select stuno, stuname, stuage, graname from student
+		<where>
+			<!--
+				foreach标签属性介绍：
+				1、collection：要遍历的集合
+							  规定：
+								a、若集合为某个对象的属性，则collection属性值就是该对象的类名
+								b、若集合为简单类型数组，collection的属性值为array
+								c、若集合为对象数组，collection的属性值为object
+								d、若集合为集合，collection的属性值为list
+				2、open：遍历点左边的sql语句
+				3、close：遍历点右边的sql语句
+				4、item：存放每次遍历结果的变量，类似for(String str : strs)的str变量
+				5、separator：每个遍历结果之间的分隔符
+			-->
+			<if test="stuNos != null and stuNos.size > 0">
+				<foreach collection="stuNos" open="and stuno in(" close=")" item="stuNo" separator=",">
+					#{stuNo}
+				</foreach>
+			</if>
+		</where>
+	</select>
+
+	<!--foreach遍历集合-->
+	<select id="foreachWithCollection" parameterType="list" resultType="Student">
+		select * from student
+		<where>
+			<if test="list != null and list.size > 0">
+				<foreach collection="list" open="and stuno in(" close=")" item="stuNo" separator=",">
+					#{stuNo}
+				</foreach>
+			</if>
+		</where>
+	</select>
+
+	<!--foreach遍历数组-->
+	<select id="foreachWithArray" parameterType="int[]" resultType="Student">
+		select * from student
+		<where>
+			<if test="array != null and array.length > 0">
+				<foreach collection="array" open="and stuno in(" close=")" item="stuNo" separator=",">
+					#{stuNo}
+				</foreach>
+			</if>
+		</where>
+	</select>
+
+	<!--foreach遍历对象数组，注意parameterType、item、#{Student.stuNo}三处-->
+	<select id="foreachWithObjectArray" parameterType="object[]" resultType="Student">
+		select * from student
+		<where>
+			<if test="array != null and array.length > 0">
+				<foreach collection="array" open="and stuno in(" close=")" item="Student" separator=",">
+					#{Student.stuNo}
+				</foreach>
+			</if>
+		</where>
+	</select>
+</mapper>

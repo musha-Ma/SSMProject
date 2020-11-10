@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        构造注入
+        1、使用constructor-arg标签完成构造注入
+        2、构造注入方式一：根据形参名字
+        3、构造注入方式二：根据形参顺序，默认下标从0开始递增
+    -->
+
+    <!--根据形参名构造注入，形参的出现顺序不是必须的-->
+    <bean id="student" class="com.mms.value.Student">
+        <constructor-arg name="name" value="李四"/>
+        <constructor-arg name="age" value="24"/>
+        <constructor-arg name="address" ref="address"/>
+    </bean>
+    <bean id="address" class="com.mms.value.Address">
+        <constructor-arg name="homeAddress" value="新疆"/>
+        <constructor-arg name="schoolAddress" value="西安"/>
+    </bean>
+
+    <!--构造注入，使用下标，出现的顺序没要求，因为已经通过下标绑定起来了-->
+    <bean id="diByContructor" class="com.mms.value.Student">
+        <constructor-arg index="0" value="赵六"/>
+        <constructor-arg index="1" value="26"/>
+        <constructor-arg index="2" ref="address"/>
+    </bean>
+
+    <!--创建File对象-->
+    <bean id="myFile" class="java.io.File">
+        <constructor-arg name="parent" value="/Users/devil/Projects/笔记"/>
+        <constructor-arg name="child" value="Mybatis思维导图.xmind"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--组件扫描器，创建controller对象、全局异常处理对象-->
+    <context:component-scan base-package="com.mms.controller"/>
+    <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--注册拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--
+                创建自定义拦截器要拦截的url，将客户端发出的student.do的url交由myinterceptor
+                拦截器处理
+            -->
+            <mvc:mapping path="/student.do"/>
+            <!--声明自定义拦截器对象，该对象交由springmvc容器创建-->
+            <bean class="com.mms.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+
+        <!--拦截器链-->
+        <mvc:interceptor>
+            <mvc:mapping path="/student.do"/>
+            <bean class="com.mms.interceptor.MyInterceptor2"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>

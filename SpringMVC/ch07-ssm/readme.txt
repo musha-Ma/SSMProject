@@ -1,0 +1,21 @@
+ch07-ssm:ssm整合开发
+一、整合思路：
+    前端发出请求->controller拦截->调用service处理业务->调用dao访问数据库
+    访问完将结果一层一层返回给前端用户
+二：各个框架在整合开发中扮演的角色
+    1）spring：完成对dao、service、SqlSessionFactory对象的创建
+    2）mybatis：对数据库进行访问、封住查询结果
+    3）springmvc：完成controller和web开发相关的对象创建
+三、整合开发步骤：
+    0：准备数据表
+    1、新建maven项目
+    2、引入依赖
+        spring依赖、mybatis依赖、sprigmvc依赖、jackson依赖（完成ajax）、mysql驱动、、
+        druid数据源、jsp、servlet
+    3、写web.xml配置文件
+        1）注册中央调度器DispacherServlet
+        2）注册ServletContext监听器的实现类ContextLoaderListener，用于创建Spring容器及将创
+           建好的Spring容器对象放入到ServletContext的作用域中
+        3）注册字符集过滤器CharacterEncodingFilter，解决乱码问题
+    4、创建项目结构
+    5、写springmvc、spring、mybatis配置文件

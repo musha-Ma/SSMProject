@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+        程序优化
+            1、首先是数据库信息的优化，入门案例的数据库配置信息是写死的，不利于后期的扩展，
+               我们可以将其写在一个单独的配置文件内，降低程序的耦合性
+            2、如何引入单独的数据库配置文件？
+                使用properties标签引入即可，然后将dataSource标签内的property标签的属性值改为
+                单独数据库配置文件properties的key即可，类似于EL表达式${key}
+    -->
+
+    <!--引入数据库配置文件-->
+    <properties resource="db.properties"/>
+
+    <!--
+        配置别名
+            1、在不配置别名的情况下，每次的resultType和parameterType的值必须要写实体类的全类名
+               显得非常麻烦，设置了别名以后，在使用实体类的时候直接使用别名即可
+            2、配置别名分为单个设置别名和批量设置别名
+            3、别名的设置在typeAliases标签内部设置别名
+    -->
+
+    <!--
+    -->
+    <typeAliases>
+        <!--
+            设置单个别名，设置Student实体类的别名为student，以后的student就代表了Student实体类
+            并且不区分别名的大小写
+        -->
+        <typeAlias type="com.mms.entity.Student" alias="student"/>
+        <!--配置类型转换器别名-->
+        <typeAlias type="com.mms.converter.BooleanToIntConverter" alias="converter"/>
+        <!--
+            批量设置别名，会自动的将该包下的所有类定义了别名，别名就是其自身且不区分大小
+        -->
+        <package name="com.mms.entity" />
+    </typeAliases>
+
+    <!--配置类型转换器-->
+    <typeHandlers>
+        <!--容易出错的地方，jdbcType没有int类型，只有INTEGER且大写-->
+        <typeHandler handler="converter" javaType="Boolean" jdbcType="INTEGER"/>
+    </typeHandlers>
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载映射配置文件-->
+    <mappers>
+        <mapper resource="com/mms/mapper/studentMapper.xml"></mapper>
+    </mappers>
+</configuration>

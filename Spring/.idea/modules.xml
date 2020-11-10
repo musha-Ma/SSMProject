@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ch01-hello-spring/ch01-hello-spring.iml" filepath="$PROJECT_DIR$/ch01-hello-spring/ch01-hello-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch02-di-xml/ch02-di-xml.iml" filepath="$PROJECT_DIR$/ch02-di-xml/ch02-di-xml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch03-di-annotation/ch03-di-annotation.iml" filepath="$PROJECT_DIR$/ch03-di-annotation/ch03-di-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch04-aop-aspectj/ch04-aop-aspectj.iml" filepath="$PROJECT_DIR$/ch04-aop-aspectj/ch04-aop-aspectj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch05-spring-mybatis/ch05-spring-mybatis.iml" filepath="$PROJECT_DIR$/ch05-spring-mybatis/ch05-spring-mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch06-spring-trans/ch06-spring-trans.iml" filepath="$PROJECT_DIR$/ch06-spring-trans/ch06-spring-trans.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch07-spring-trans-anno/ch07-spring-trans-anno.iml" filepath="$PROJECT_DIR$/ch07-spring-trans-anno/ch07-spring-trans-anno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch08-spring-trans-aspectj/ch08-spring-trans-aspectj.iml" filepath="$PROJECT_DIR$/ch08-spring-trans-aspectj/ch08-spring-trans-aspectj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch09-spring-web/ch09-spring-web.iml" filepath="$PROJECT_DIR$/ch09-spring-web/ch09-spring-web.iml" />
+    </modules>
+  </component>
+</project>

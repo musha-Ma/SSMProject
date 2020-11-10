@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mms.mapper.StudentMapper">
+
+	<!--输出类型为简单类型-->
+	<select id="queryTotal" resultType="int">
+		select count(*) from student
+	</select>
+
+	<!--输出参数为对象类型-->
+	<select id="queryAllStudents" resultType="Student">
+		select * from student
+	</select>
+
+	<!--使用HashMap进行查询-->
+	<select id="resultIsHashMap" resultType="hashmap">
+		select * from student
+	</select>
+
+	<!--
+		使用resultType+HashMap解决字段名与属性名不同情况
+		类似与数据库别名
+	-->
+	<select id="resultTypeWithHashMap" parameterType="int" resultType="Student">
+		<!--
+		一下写法由于id字段名与属性stuNo名称不一致，所以查到的id值会丢失使用0来代替
+		select id,stuname,stuage,graname from student where id = #{stuNo}-->
+
+		select stuno ,stuname,stuage,graname from student where stuno = #{stuNo}
+	</select>
+</mapper>

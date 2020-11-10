@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <package name="com.mms.entity"/>
+    </typeAliases>
+    <mappers>
+        <!--批量加载mapper映射文件，要求mapper文件与mapper接口名字一样（包括大小写）-->
+        <package name="com.mms.mapper"/>
+    </mappers>
+</configuration>

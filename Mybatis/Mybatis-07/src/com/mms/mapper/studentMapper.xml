@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mms.mapper.StudentMapper">
+
+    <!--一对一关联查询方式一：使用业务扩展类-->
+    <select id="queryOneToOne" parameterType="int" resultType="StudentAndCard">
+        select s.*,c.* from student s inner join studentcard c
+        on s.cid = c.cardid
+        where stuno = #{stuNo}
+    </select>
+
+    <!--一对一关联查询方式一：使用resultMap-->
+    <select id="OneToOneWithResultMap" parameterType="int" resultMap="studentMapping">
+        select s.*,c.*
+        from student s
+        join studentcard c
+        on s.cid = c.cardid
+            where stuno = #{stuNo}
+    </select>
+    <!--配置-resultMap-->
+    <resultMap id="studentMapping" type="Student">
+        <!--学生属性对应关系-->
+        <id property="stuNo" column="stuno"></id>
+        <id property="stuName" column="stuname"></id>
+        <id property="stuAge" column="stuage"></id>
+        <id property="graName" column="graname"></id>
+        <id property="CID" column="cid"></id>
+        <id property="classNo" column="classno"></id>
+
+        <!--
+            学生证属性对应关系，一对一查询使用association，
+            property指定学生类的哪个成员（属性名）
+            id标签与result标签指定对应关系
+        -->
+        <association property="studentCard" javaType="StudentCard">
+            <id property="cardID" column="cardid"></id>
+            <result property="cardInfo" column="cardinfo"></result>
+        </association>
+    </resultMap>
+
+    <!--一对多-->
+    <select id="oneToMany" parameterType="int" resultMap="oneToManyMapping">
+        select s.*, c.*
+        from student s
+        inner join class c
+        on s.classno = c.classid
+        where classid = #{classId}
+    </select>
+    <resultMap id="oneToManyMapping" type="StudentClass">
+        <id property="classId" column="classid"></id>
+        <result property="classInfo" column="classinfo"></result>
+
+        <!--指定Student属性的对应关系，一对多使用collection，注意ofType-->
+        <collection property="studentList" ofType="Student">
+            <id property="stuNo" column="stuno"></id>
+            <result property="stuName" column="stuname"></result>
+            <result property="stuAge" column="stuage"></result>
+            <result property="graName" column="graname"></result>
+            <result property="CID" column="cid"></result>
+            <result property="classNo" column="classno"></result>
+        </collection>
+
+    </resultMap>
+</mapper>

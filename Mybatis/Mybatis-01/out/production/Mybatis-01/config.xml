@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+        Mybatis主配置文件
+        通过environments的default属性值与environment的id值来指定环境
+    -->
+    <environments default="mysql">
+        <environment id="mysql">
+            <!--
+                transactionManager为处理事务的方式
+                    JDBC：使用传统JDBC方式处理事务，即手动commit、rollback、close等
+                    MANAGED：交由第三方组件处理事务，例如Spring，但是注意必须手动close
+            -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--
+                dataSource为数据源
+                    POOLED：使用数据源
+                    UNPOOLED：不使用数据源
+                    JNDI：使用tomcat内置的数据源
+            -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>
+                <property name="username" value="root"/>
+                <property name="password" value="333"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载映射配置文件-->
+    <mappers>
+        <mapper resource="com/mms/entity/studentMapper.xml"></mapper>
+    </mappers>
+</configuration>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mms.mapper.StudentMapper">
+
+    <select id="queryStudentById" resultType="student"  parameterType="int">
+		select * from student where  stuno = #{stuNo}
+	</select>
+
+	<!--解决属性名与字段名不能合理识别方案
+	<select id="queryStudentById" resultMap="studentMapper"  parameterType="int">
+		select * from student where  stuno = #{stuNo}
+	</select>
+	<resultMap id="studentMapper" type="com.mms.entity.Student">
+		配置属性与字段一一对应关系，分为主键（id标签）和非主键（result）
+		<id property="id" column="stuno"/>
+		<result property="stuName" column="stuname"/>
+		<result property="stuAge" column="stuage"/>
+		<result property="graName" column="graname"/>
+		需要进行类型转换的标签内部加入jdbcType和javaType
+		<result property="stuSex" column="stusex" javaType="Boolean" jdbcType="INTEGER"/>
+	</resultMap>-->
+
+    <!--查询全部-->
+    <select id="queryAllStudent" resultType="student">
+		select * from student
+	</select>
+
+    <!--增加-->
+    <insert id="insertStudent" parameterType="student">
+		insert into student (stuno,stuname,stuage,graname,stusex) values (#{stuNo},#{stuName},#{stuAge},#{graName},#{stuSex})
+	</insert>
+
+    <!--修改-->
+    <update id="updateStudent" parameterType="student">
+		update student set stuname = #{stuName}, stuage = #{stuAge}, graname = #{graName}, stusex = #{stuSex} where stuno = #{stuNo}
+	</update>
+
+    <!--删除-->
+    <delete id="deleteStudent" parameterType="int">
+		delete from student where stuno = #{stuNo}
+	</delete>
+
+	<!--使用转换器根据学号查询-->
+	<select id="queryByConverter" resultMap="studenResult" parameterType="int">
+		select * from student where stuno = #{stuNo}
+	</select>
+	<!--配置resultMap-->
+	<resultMap id="studenResult" type="student">
+		<!--配置属性与字段一一对应关系，分为主键（id标签）和非主键（result）-->
+		<id property="stuNo" column="stuno"/>
+		<result property="stuName" column="stuname"/>
+		<result property="stuAge" column="stuage"/>
+		<result property="graName" column="graname"/>
+		<!--需要进行类型转换的标签内部加入jdbcType和javaType-->
+		<result property="stuSex" column="stusex" javaType="Boolean" jdbcType="INTEGER"/>
+	</resultMap>
+</mapper>
